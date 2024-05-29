@@ -1,0 +1,256 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  /* ### Primary */
+
+  --Blue: hsl(246, 80%, 60%);
+  /* (work) */
+  --work-color: hsl(15, 100%, 70%);
+  /* (play) */
+  --play-color: hsl(195, 74%, 62%);
+  --study-color: hsl(348, 100%, 68%);
+  --exercise-color: hsl(145, 58%, 55%);
+  --social-color: hsl(264, 64%, 52%);
+  --care-color: hsl(43, 84%, 65%);
+
+  /* ### Neutral */
+
+  --Very-dark-blue: hsl(226, 43%, 10%);
+  --Dark-blue: hsl(235, 46%, 20%);
+  --Desaturated-blue: hsl(235, 45%, 61%);
+  --Pale-Blue: hsl(236, 100%, 87%);
+
+  /* weights */
+  --light-weight: 300;
+  --medium-weight: 400;
+  --thick-weight: 500;
+}
+body {
+  font-family: Rubik;
+  background-color: var(--Very-dark-blue);
+  min-height: 100vh;
+}
+h2 {
+  font-size: 16px;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+main .tracker-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 19rem;
+  grid-template-rows: repeat(7, 200px);
+  gap: 1rem;
+  margin: 4rem auto;
+}
+.tracker-container .card,
+.tracker-container .user {
+  position: relative;
+}
+.tracker-container .user .upper-box {
+  position: relative;
+  background-color: var(--Blue);
+  z-index: 1;
+  display: flex;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  height: 65%;
+}
+.user .upper-box img {
+  width: 4rem;
+  border: 3px solid white;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+.user .upper-box .info {
+  margin-top: 0.5rem;
+}
+.user .upper-box .info p {
+  color: var(--Pale-Blue);
+}
+.user .upper-box .info h1 {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: var(--light-weight);
+}
+
+.tracker-container .user .lower-box {
+  top: -35%;
+}
+.tracker-container .user .lower-box ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  top: 65px;
+}
+.user .lower-box ul li a {
+  color: var(--Blue);
+  text-decoration: none;
+}
+.user ul li a.active {
+  color: white;
+}
+
+.tracker-container .card:not(:first-child) .upper-box {
+  border-radius: 1rem;
+  height: 65%;
+  top: 0;
+  position: relative;
+  text-align: right;
+  padding-right: 10px;
+}
+.tracker-container .card.work .upper-box {
+  background-color: var(--work-color);
+}
+.tracker-container .card.play .upper-box {
+  background-color: var(--play-color);
+}
+.tracker-container .card.study .upper-box {
+  background-color: var(--study-color);
+}
+.tracker-container .card.exercise .upper-box {
+  background-color: var(--exercise-color);
+}
+.tracker-container .card.social .upper-box {
+  background-color: var(--social-color);
+}
+.tracker-container .card.care .upper-box {
+  background-color: var(--care-color);
+}
+.tracker-container .card .lower-box,
+.tracker-container .user .lower-box {
+  bottom: 90px;
+  height: 65%;
+  width: 100%;
+  position: relative;
+  background-color: var(--Dark-blue);
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+}
+.card .lower-box .activity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.card .lower-box h2 {
+  color: white;
+  font-weight: var(--light-weight);
+}
+.upper-box .option-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 4rem;
+  z-index: 1;
+  right: 1rem;
+}
+
+.card .lower-box .time-spent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .lower-box .time-spent span:first-of-type {
+  color: white;
+  font-size: 2rem;
+  font-weight: var(--light-weight);
+}
+.card .lower-box .time-spent span:last-of-type {
+  color: var(--Pale-Blue);
+}
+
+@media (min-width: 768px) {
+  main .tracker-container {
+    grid-template-columns: 350px 350px;
+    grid-template-rows: repeat(4, 200px);
+  }
+}
+
+@media (min-width: 991px) {
+  main .tracker-container {
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: 200px 200px;
+    grid-template-areas:
+      "us w p st "
+      "us e so c";
+  }
+  main .tracker-container .user {
+    grid-area: us;
+  }
+  main .tracker-container .card.work {
+    grid-area: w;
+  }
+  main .tracker-container .card.study {
+    grid-area: st;
+  }
+  main .tracker-container .card.play {
+    grid-area: p;
+  }
+  main .tracker-container .card.exercise {
+    grid-area: e;
+  }
+  main .tracker-container .card.social {
+    grid-area: so;
+  }
+  main .tracker-container .card.care {
+    grid-area: c;
+  }
+  .tracker-container .user .upper-box {
+    flex-direction: column;
+  }
+  .user .upper-box .info {
+    margin-top: 1.5rem;
+  }
+  .user .upper-box .info h1 {
+    font-size: 2rem;
+  }
+  .user .upper-box .info p {
+    font-size: 0.75rem;
+  }
+  .tracker-container .user .lower-box {
+    top: -32%;
+  }
+
+  .tracker-container .user .lower-box ul {
+    flex-direction: column;
+    top: 120px;
+  }
+  .user .lower-box ul li {
+    margin-top: 1rem;
+  }
+  .user .lower-box ul li a:hover {
+    cursor: pointer;
+    color: white;
+  }
+  .tracker-container .card .lower-box {
+    height: 75%;
+  }
+  .card:not(.user) .lower-box:hover {
+    cursor: pointer;
+    background-color: hsl(235 46% 30% / 1);
+  }
+
+  .card .lower-box .time-spent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card .lower-box .time-spent span:first-of-type {
+    font-size: 2.5rem;
+  }
+  .card .lower-box .time-spent span:last-of-type {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+}
